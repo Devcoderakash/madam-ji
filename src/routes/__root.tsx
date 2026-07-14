@@ -10,7 +10,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -38,7 +37,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    // Error logged
   }, [error]);
 
   return (
@@ -77,17 +76,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
+      { title: "Madam Ji's Dream" },
       { name: "description", content: "An interactive 3D love story website, inspired by animated films, for a personalized, magical experience." },
       { name: "author", content: "For Madam Ji" },
-      { property: "og:title", content: "Lovable App" },
+      { property: "og:title", content: "Madam Ji's Dream" },
       { property: "og:description", content: "An interactive 3D love story website, inspired by animated films, for a personalized, magical experience." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Lovable App" },
+      { name: "twitter:title", content: "Madam Ji's Dream" },
       { name: "twitter:description", content: "An interactive 3D love story website, inspired by animated films, for a personalized, magical experience." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4f239320-544f-4d4d-b028-d974c9d51ea3/id-preview-48abd963--9079cb57-0690-4863-a484-f568919c1d6d.lovable.app-1784011095969.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4f239320-544f-4d4d-b028-d974c9d51ea3/id-preview-48abd963--9079cb57-0690-4863-a484-f568919c1d6d.lovable.app-1784011095969.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
