@@ -1,0 +1,192 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-pink: var(--pink);
+  --color-lavender: var(--lavender);
+  --color-cream: var(--cream);
+  --color-moon: var(--moon);
+  --color-sky: var(--sky);
+  --color-gold: var(--gold);
+  --font-display: "Cormorant Garamond", serif;
+  --font-hand: "Caveat", cursive;
+  --font-body: "Quicksand", sans-serif;
+}
+
+:root {
+  --radius: 1.25rem;
+  --background: oklch(0.97 0.02 340);
+  --foreground: oklch(0.28 0.05 320);
+  --card: oklch(1 0 0 / 0.55);
+  --card-foreground: oklch(0.28 0.05 320);
+  --popover: oklch(0.99 0.01 340);
+  --popover-foreground: oklch(0.28 0.05 320);
+  --primary: oklch(0.72 0.16 350);
+  --primary-foreground: oklch(0.99 0.01 340);
+  --secondary: oklch(0.88 0.08 300);
+  --secondary-foreground: oklch(0.28 0.05 320);
+  --muted: oklch(0.94 0.02 340);
+  --muted-foreground: oklch(0.5 0.05 320);
+  --accent: oklch(0.86 0.12 60);
+  --accent-foreground: oklch(0.28 0.05 320);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.85 0.05 340 / 0.4);
+  --input: oklch(0.9 0.03 340);
+  --ring: oklch(0.72 0.16 350);
+
+  --pink: oklch(0.85 0.12 350);
+  --lavender: oklch(0.82 0.09 300);
+  --cream: oklch(0.96 0.04 80);
+  --moon: oklch(0.95 0.06 90);
+  --sky: oklch(0.86 0.06 240);
+  --gold: oklch(0.85 0.14 80);
+
+  --grad-dawn: linear-gradient(180deg, oklch(0.92 0.06 340) 0%, oklch(0.88 0.08 300) 45%, oklch(0.94 0.05 240) 100%);
+  --grad-dusk: linear-gradient(180deg, oklch(0.35 0.08 290) 0%, oklch(0.45 0.12 320) 60%, oklch(0.7 0.14 30) 100%);
+  --grad-night: linear-gradient(180deg, oklch(0.18 0.06 280) 0%, oklch(0.24 0.08 300) 60%, oklch(0.35 0.1 330) 100%);
+  --grad-magic: linear-gradient(135deg, oklch(0.85 0.12 350), oklch(0.82 0.09 300), oklch(0.88 0.08 240));
+  --shadow-soft: 0 20px 60px -20px oklch(0.7 0.15 340 / 0.35), 0 8px 24px -12px oklch(0.7 0.12 300 / 0.25);
+  --shadow-glow: 0 0 60px oklch(0.9 0.1 340 / 0.5), 0 0 120px oklch(0.85 0.12 300 / 0.3);
+  --glass: oklch(1 0 0 / 0.35);
+  --glass-border: oklch(1 0 0 / 0.55);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body { height: 100%; }
+  body {
+    background: var(--grad-dawn);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    cursor: none;
+  }
+  h1, h2, h3, .display { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.01em; }
+  .hand { font-family: var(--font-hand); }
+}
+
+@utility glass {
+  background: var(--glass);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility glass-dark {
+  background: oklch(0.2 0.05 300 / 0.4);
+  backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid oklch(1 0 0 / 0.2);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility btn-magic {
+  background: var(--grad-magic);
+  color: white;
+  padding: 0.9rem 2.2rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-glow);
+  transition: transform .4s cubic-bezier(.2,.9,.3,1.2), box-shadow .4s;
+  &:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 90px oklch(0.9 0.14 340 / 0.7); }
+}
+
+@utility text-glow {
+  text-shadow: 0 0 30px oklch(1 0.05 340 / 0.6), 0 0 60px oklch(0.9 0.12 300 / 0.4);
+}
+
+@keyframes float-slow {
+  0%,100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-24px) rotate(3deg); }
+}
+@keyframes drift {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(120vw, -20vh); }
+}
+@keyframes twinkle {
+  0%,100% { opacity: .3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+@keyframes petal-fall {
+  0% { transform: translateY(-10vh) translateX(0) rotate(0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(110vh) translateX(30vw) rotate(720deg); opacity: 0; }
+}
+@keyframes firefly {
+  0%,100% { transform: translate(0,0) scale(1); opacity: .3; }
+  25% { transform: translate(40px,-30px) scale(1.2); opacity: 1; }
+  50% { transform: translate(-20px,-60px) scale(.9); opacity: .7; }
+  75% { transform: translate(-40px,-20px) scale(1.1); opacity: 1; }
+}
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  20% { transform: scale(1.15); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.1); }
+}
+@keyframes aurora-shift {
+  0%,100% { transform: translateX(0) skewX(-8deg); opacity: .4; }
+  50% { transform: translateX(30px) skewX(4deg); opacity: .7; }
+}
+@keyframes shooting-star {
+  0% { transform: translate(-10vw,10vh) rotate(-30deg); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translate(90vw,80vh) rotate(-30deg); opacity: 0; }
+}
+
+.animate-float { animation: float-slow 6s ease-in-out infinite; }
+.animate-twinkle { animation: twinkle 3s ease-in-out infinite; }
+.animate-heartbeat { animation: heartbeat 1.4s ease-in-out infinite; }
+
+/* Compositor-only float for tree blossoms — no layout, no paint. */
+@keyframes ct-float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50%      { transform: translate(-50%, -50%) translateY(-6px); }
+}
+.ct-blossom {
+  will-change: transform;
+  animation-name: ct-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transform: translate(-50%, -50%);
+  backface-visibility: hidden;
+}
+@keyframes ct-bulb {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.35); }
+}
+.ct-firefly-bulb {
+  will-change: opacity, transform;
+  animation: ct-bulb 2.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ct-blossom, .ct-firefly-bulb { animation: none; }
+}
